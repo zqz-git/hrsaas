@@ -15,6 +15,9 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+// 引入自定义指令
+import * as directives from '@/directives'
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -27,6 +30,12 @@ if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
 }
+
+// 遍历所有导出的指令对象，完成自定义全局注册
+Object.keys(directives).forEach(key => {
+  // 注册定义指令
+  Vue.directive(key, directives[key])
+})
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })

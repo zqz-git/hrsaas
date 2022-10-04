@@ -1,12 +1,26 @@
-// import request from '@/utils/request'
+import request from '@/utils/request'
 
-// export function login(data) {
-//   return request({
-//     url: '/vue-admin-template/user/login',
-//     method: 'post',
-//     data
-//   })
-// }
+// 登录
+export function login(data) {
+  return request({
+    url: '/sys/login',
+    method: 'post',
+    data
+  })
+}
+
+export function getUserInfo() {
+  return request({
+    url: '/sys/profile',
+    method: 'POST'
+  })
+}
+// 获取员工基本信息-获取用户头像
+export function getUserDetailById(id) {
+  return request({
+    url: `/sys/user/${id}`
+  })
+}
 
 // export function getInfo(token) {
 //   return request({
@@ -22,10 +36,3 @@
 //     method: 'post'
 //   })
 // }
-
-export default  {
-  namespaced: true,
-   state: {},
-   mutations: {},
-   actions: {}
- }
